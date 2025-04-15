@@ -22,27 +22,32 @@
       <div class="mt-4 space-y-4">
         <p class="font-semibold text-lg">Solo Leveling S02E01 1080P</p>
         <iframe width="100%" height="360" src="https://short.icu/owJ1Lmi0W" frameborder="0" allowfullscreen></iframe>
-        <!-- Add more videos if needed -->
       </div>
     </details>
 
     <!-- Folder 2 -->
     <details class="bg-white dark:bg-gray-700 rounded-xl p-4 shadow">
-      <summary class="cursor-pointer font-semibold text-lg">📁 Hafta vasooli</summary>
+      <summary class="cursor-pointer font-semibold text-lg">📁 Hafta Vasooli</summary>
       <div class="mt-4 space-y-4">
-        <p class="font-semibold text-lg">Hafta_Vasooli_S01_E01_Valentines_Day_Par_Hafta_Vasooli_1080p_JioHotstar</p>
+        <p class="font-semibold text-lg">Hafta_Vasooli_S01_E01_Valentines_Day</p>
         <iframe width="100%" height="360" src="https://short.icu/PvGqzVisM" frameborder="0" allowfullscreen></iframe>
-        <p class="font-semibold text-lg">Hafta_Vasooli_S01_E02_Safar_Ya_Suffer_1080p_JioHotstar_WEB_DL_Hindi</p>
+        
+        <p class="font-semibold text-lg">Hafta_Vasooli_S01_E02_Safar_Ya_Suffer</p>
         <iframe width="100%" height="360" src="https://short.icu/_6I2Y3k-g" frameborder="0" allowfullscreen></iframe>
-        <p class="font-semibold text-lg">Hafta_Vasooli_S01_E03_Aspataal_Mein_Hafta_Vasooli_1080p_JioHotstar</p>
+        
+        <p class="font-semibold text-lg">Hafta_Vasooli_S01_E03_Aspataal_Mein_Hafta</p>
         <iframe width="100%" height="360" src="https://short.icu/dL370wqIm" frameborder="0" allowfullscreen></iframe>
-        <p class="font-semibold text-lg">Hafta_Vasooli_S01_E04_Munawar_Plays_It_Safe_1080p_JioHotstar_WEB</p>
+        
+        <p class="font-semibold text-lg">Hafta_Vasooli_S01_E04_Munawar_Plays_It_Safe</p>
         <iframe width="100%" height="360" src="https://short.icu/J-lAv3cik" frameborder="0" allowfullscreen></iframe>
-        <p class="font-semibold text-lg">Hafta_Vasooli_S01_E05_Womens_Day_Ka_Witty_Celebration_1080p_Hotstar</p>
+        
+        <p class="font-semibold text-lg">Hafta_Vasooli_S01_E05_Womens_Day_Celebration</p>
         <iframe width="100%" height="360" src="https://short.icu/00RMjLcue" frameborder="0" allowfullscreen></iframe>
-        <p class="font-semibold text-lg">Hafta_Vasooli_S01_E06_Comedy_Ka_Khauf_1080p_Hotstar_WEB_DL_Hindi</p>
+        
+        <p class="font-semibold text-lg">Hafta_Vasooli_S01_E06_Comedy_Ka_Khauf</p>
         <iframe width="100%" height="360" src="https://short.icu/oFaENdEht" frameborder="0" allowfullscreen></iframe>
-        <p class="font-semibold text-lg">Hafta_Vasooli_S01_E07_Munawar_Aur_Marketing_1080p_Hotstar_WEB_DL</p>
+        
+        <p class="font-semibold text-lg">Hafta_Vasooli_S01_E07_Munawar_Aur_Marketing</p>
         <iframe width="100%" height="360" src="https://short.icu/vUPHejyE-" frameborder="0" allowfullscreen></iframe>
       </div>
     </details>
@@ -58,8 +63,10 @@
   </div>
 
   <script>
+    // Theme toggle
     const themeToggle = document.getElementById('theme-toggle');
     const html = document.documentElement;
+
     if (localStorage.getItem('theme') === 'dark') html.classList.add('dark');
     themeToggle.addEventListener('click', () => {
       html.classList.toggle('dark');
@@ -67,6 +74,19 @@
       themeToggle.textContent = html.classList.contains('dark') ? '☀️ Light Mode' : '🌙 Dark Mode';
     });
     themeToggle.textContent = html.classList.contains('dark') ? '☀️ Light Mode' : '🌙 Dark Mode';
+
+    // Ensure only one iframe plays at a time
+    const iframes = document.querySelectorAll('iframe');
+    iframes.forEach(currentIframe => {
+      currentIframe.addEventListener('mouseenter', () => {
+        iframes.forEach(otherIframe => {
+          if (otherIframe !== currentIframe) {
+            const currentSrc = otherIframe.getAttribute('src');
+            otherIframe.setAttribute('src', currentSrc); // reload to stop playback
+          }
+        });
+      });
+    });
   </script>
 </body>
 </html>
