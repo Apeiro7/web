@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Video Code Generator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+  <div class="max-w-xl mx-auto bg-white p-6 rounded shadow">
+    <h1 class="text-2xl font-bold mb-4">🎬 Video Embed Code Generator</h1>
+    
+    <form id="videoForm" class="space-y-4">
+      <div>
+        <label class="block font-semibold">Video Title</label>
+        <input type="text" id="title" class="w-full border rounded p-2" required>
+      </div>
+      <div>
+        <label class="block font-semibold">Video Link</label>
+        <input type="url" id="link" class="w-full border rounded p-2" required>
+      </div>
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Generate Code</button>
+    </form>
+
+    <div id="outputContainer" class="mt-6 hidden">
+      <h2 class="text-lg font-semibold mb-2">Generated HTML Code:</h2>
+      <textarea id="output" class="w-full border p-3 rounded text-sm h-40" readonly></textarea>
+      <button onclick="copyCode()" class="mt-2 bg-green-600 text-white px-4 py-2 rounded">📋 Copy to Clipboard</button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('videoForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const title = document.getElementById('title').value.trim();
+      const link = document.getElementById('link').value.trim();
+
+      const html = `<div><span class="font-semibold">${title}</span> <a href="#" class="watch-link text-blue-500 hover:underline" data-src="${link}">Watch Here</a></div>`;
+
+      document.getElementById('output').value = html;
+      document.getElementById('outputContainer').classList.remove('hidden');
+    });
+
+    function copyCode() {
+      const output = document.getElementById('output');
+      output.select();
+      output.setSelectionRange(0, 99999);
+      document.execCommand('copy');
+      alert('✅ HTML code copied! Paste it into your videos.html inside the correct folder.');
+    }
+  </script>
+</body>
+</html>
