@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="AMIT Dashboard - Access software, videos, anime, courses and more" />
+  <meta name="description" content="AMIT Hub - Explore software, videos, anime, courses and more" />
   <meta name="author" content="AMIT" />
-  <meta name="theme-color" content="#1e3a8a" />
-  <title>Welcome | AMIT Hub</title>
+  <meta name="theme-color" content="#1e40af" />
+  <title>AMIT Hub</title>
   <link rel="icon" href="favicon.ico" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -15,62 +15,88 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-          }
+            sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+            mono: ['Fira Code', 'monospace']
+          },
+          boxShadow: {
+            card: '0 10px 30px rgba(0,0,0,0.08)',
+          },
         }
       }
     };
   </script>
 </head>
-<body class="bg-gradient-to-br from-gray-100 to-blue-100 dark:from-gray-900 dark:to-gray-800 text-gray-800 dark:text-gray-100 min-h-screen font-sans transition duration-300 px-6 py-10">
+
+<body class="bg-gradient-to-br from-gray-100 to-blue-100 dark:from-gray-900 dark:to-gray-800 text-gray-800 dark:text-gray-100 min-h-screen font-sans flex flex-col transition-all">
 
   <!-- Header -->
-  <header class="flex flex-col sm:flex-row justify-between items-center gap-6 mb-12 max-w-5xl mx-auto">
-    <div>
-      <pre class="font-mono text-sm sm:text-base md:text-lg lg:text-xl leading-tight text-center sm:text-left whitespace-pre-wrap">
+  <header class="flex items-center justify-between py-4 px-6 md:px-12 shadow-md bg-white dark:bg-gray-900">
+    <div class="flex items-center gap-4">
+      <div class="font-mono text-xs sm:text-base md:text-lg whitespace-pre leading-tight">
+<pre>
    A     M   M   III  TTTTT
   A A    MM MM    I     T  
  AAAAA   M M M    I     T  
 A     A  M   M    I     T  
 A     A  M   M   III    T  
-      </pre>
+</pre>
+      </div>
+      <span class="hidden sm:block text-xl font-bold ml-2">AMIT Hub</span>
     </div>
-    <button id="theme-toggle" aria-label="Toggle Dark Mode" class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white px-5 py-2 rounded-full shadow hover:shadow-lg transition">
+    <button id="theme-toggle" class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white px-4 py-2 rounded-full shadow hover:shadow-lg transition">
       🌙 Dark Mode
     </button>
   </header>
 
-  <!-- Main Links -->
-  <main class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto text-center">
-    <a href="software.html" class="bg-white dark:bg-gray-700 text-blue-600 dark:text-blue-400 p-6 rounded-2xl shadow hover:shadow-xl transform hover:-translate-y-1 transition duration-300">
-      <h2 class="text-2xl font-semibold mb-2">🧩 Software Section</h2>
-      <p class="text-sm">Explore downloadable software and tools.</p>
+  <!-- Hero -->
+  <section class="text-center py-16 px-4 bg-gradient-to-b from-blue-50 dark:from-gray-800 to-transparent">
+    <h1 class="text-4xl font-bold mb-4 tracking-tight">Welcome to AMIT Hub</h1>
+    <p class="text-lg text-gray-600 dark:text-gray-300 max-w-xl mx-auto">Explore software, videos, anime, and learning content—all in one place.</p>
+  </section>
+
+  <!-- Cards Grid -->
+  <main class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6 md:px-12 pb-20 max-w-7xl mx-auto">
+    <!-- Reusable card component -->
+    <a href="software.html" class="group bg-white dark:bg-gray-800 p-6 rounded-xl shadow-card hover:shadow-2xl transition transform hover:-translate-y-1 text-center">
+      <div class="text-4xl mb-4">🧩</div>
+      <h2 class="text-2xl font-semibold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">Software Section</h2>
+      <p class="text-sm text-gray-500 dark:text-gray-300">Explore and download useful software and tools.</p>
     </a>
-    <a href="videos.html" class="bg-white dark:bg-gray-700 text-blue-600 dark:text-blue-400 p-6 rounded-2xl shadow hover:shadow-xl transform hover:-translate-y-1 transition duration-300">
-      <h2 class="text-2xl font-semibold mb-2">🎥 Video Section</h2>
-      <p class="text-sm">Browse video folders and play content directly.</p>
+
+    <a href="videos.html" class="group bg-white dark:bg-gray-800 p-6 rounded-xl shadow-card hover:shadow-2xl transition transform hover:-translate-y-1 text-center">
+      <div class="text-4xl mb-4">🎥</div>
+      <h2 class="text-2xl font-semibold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">Video Section</h2>
+      <p class="text-sm text-gray-500 dark:text-gray-300">Stream and manage your video library.</p>
     </a>
-    <a href="anime.html" class="bg-white dark:bg-gray-700 text-blue-600 dark:text-blue-400 p-6 rounded-2xl shadow hover:shadow-xl transform hover:-translate-y-1 transition duration-300">
-      <h2 class="text-2xl font-semibold mb-2">🌸 Anime Section</h2>
-      <p class="text-sm">Dive into Anime series and movies.</p>
+
+    <a href="anime.html" class="group bg-white dark:bg-gray-800 p-6 rounded-xl shadow-card hover:shadow-2xl transition transform hover:-translate-y-1 text-center">
+      <div class="text-4xl mb-4">🌸</div>
+      <h2 class="text-2xl font-semibold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">Anime Section</h2>
+      <p class="text-sm text-gray-500 dark:text-gray-300">Watch anime content from curated collections.</p>
     </a>
-    <a href="embed.html" class="bg-white dark:bg-gray-700 text-blue-600 dark:text-blue-400 p-6 rounded-2xl shadow hover:shadow-xl transform hover:-translate-y-1 transition duration-300">
-      <h2 class="text-2xl font-semibold mb-2">🔧 Embed Code Generator</h2>
-      <p class="text-sm">Generate video embed codes with ease.</p>
+
+    <a href="embed.html" class="group bg-white dark:bg-gray-800 p-6 rounded-xl shadow-card hover:shadow-2xl transition transform hover:-translate-y-1 text-center">
+      <div class="text-4xl mb-4">🔧</div>
+      <h2 class="text-2xl font-semibold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">Embed Generator</h2>
+      <p class="text-sm text-gray-500 dark:text-gray-300">Generate HTML embed codes for your videos easily.</p>
     </a>
-    <a href="course.html" class="bg-white dark:bg-gray-700 text-blue-600 dark:text-blue-400 p-6 rounded-2xl shadow hover:shadow-xl transform hover:-translate-y-1 transition duration-300">
-      <h2 class="text-2xl font-semibold mb-2">📚 Online Courses</h2>
-      <p class="text-sm">Learn new skills with curated content.</p>
+
+    <a href="course.html" class="group bg-white dark:bg-gray-800 p-6 rounded-xl shadow-card hover:shadow-2xl transition transform hover:-translate-y-1 text-center">
+      <div class="text-4xl mb-4">📚</div>
+      <h2 class="text-2xl font-semibold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">Online Courses</h2>
+      <p class="text-sm text-gray-500 dark:text-gray-300">Learn from video courses, tutorials, and documents.</p>
     </a>
-    <a href="https://github.com/your-repo" target="_blank" class="bg-white dark:bg-gray-700 text-blue-600 dark:text-blue-400 p-6 rounded-2xl shadow hover:shadow-xl transform hover:-translate-y-1 transition duration-300">
-      <h2 class="text-2xl font-semibold mb-2">💻 GitHub Repo</h2>
-      <p class="text-sm">View this project on GitHub.</p>
+
+    <a href="https://github.com/your-repo" target="_blank" class="group bg-white dark:bg-gray-800 p-6 rounded-xl shadow-card hover:shadow-2xl transition transform hover:-translate-y-1 text-center">
+      <div class="text-4xl mb-4">💻</div>
+      <h2 class="text-2xl font-semibold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">GitHub Repo</h2>
+      <p class="text-sm text-gray-500 dark:text-gray-300">Browse the source code, contribute, or report issues.</p>
     </a>
   </main>
 
   <!-- Footer -->
-  <footer class="text-center mt-16 text-sm text-gray-500 dark:text-gray-400">
-    <p>© 2025 AMIT Hub. All rights reserved.</p>
+  <footer class="mt-auto bg-white dark:bg-gray-900 border-t dark:border-gray-700 text-center py-6 text-sm text-gray-600 dark:text-gray-400">
+    © 2025 AMIT Hub. Built with ❤️ using TailwindCSS.
   </footer>
 
   <!-- Theme Toggle Script -->
@@ -78,20 +104,22 @@ A     A  M   M   III    T
     const themeToggle = document.getElementById('theme-toggle');
     const html = document.documentElement;
 
-    function updateTheme() {
-      const isDark = html.classList.toggle('dark');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    function updateThemeUI() {
+      const isDark = html.classList.contains('dark');
       themeToggle.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
     }
 
     if (localStorage.getItem('theme') === 'dark') {
       html.classList.add('dark');
-      themeToggle.textContent = '☀️ Light Mode';
-    } else {
-      themeToggle.textContent = '🌙 Dark Mode';
     }
 
-    themeToggle.addEventListener('click', updateTheme);
+    updateThemeUI();
+
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+      updateThemeUI();
+    });
   </script>
 
 </body>
