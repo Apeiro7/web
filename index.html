@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="en" class="transition duration-300 scroll-smooth">
+<!doctype html>
+<html lang="en" class="antialiased">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="AMIT - Explore software, videos, anime, courses and more" />
-  <meta name="author" content="AMIT" />
-  <meta name="theme-color" content="#1e40af" />
+  <title>AMIT — Software • Videos • Courses</title>
   <link rel="icon" href="favicon.ico" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -17,110 +16,258 @@
             sans: ['Inter', 'ui-sans-serif', 'system-ui'],
             mono: ['Fira Code', 'monospace']
           },
-          boxShadow: {
-            card: '0 10px 30px rgba(0,0,0,0.08)',
+          keyframes: {
+            float: { '0%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-8px)' }, '100%': { transform: 'translateY(0px)' } },
+            shimmer: { '0%': { backgroundPosition: '-200% 0' }, '100%': { backgroundPosition: '200% 0' } }
           },
+          animation: {
+            float: 'float 6s ease-in-out infinite',
+            shimmer: 'shimmer 1.6s linear infinite'
+          },
+          boxShadow: {
+            card: '0 10px 30px rgba(2,6,23,0.08)'
+          }
         }
       }
-    };
+    }
   </script>
+  <style>
+    /* small custom styles */
+    .glass { background: linear-gradient(135deg, rgba(255,255,255,0.6), rgba(255,255,255,0.35)); backdrop-filter: blur(6px); }
+    .dark .glass { background: linear-gradient(135deg, rgba(17,24,39,0.5), rgba(17,24,39,0.35)); }
+    .cta-grad { background: linear-gradient(90deg,#06b6d4,#3b82f6); -webkit-background-clip: text; background-clip: text; color: transparent }
+    /* shimmer for loading-like accent */
+    .shimmer { background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.18), rgba(255,255,255,0.06)); background-size: 200% 100%; }
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important } }
+  </style>
 </head>
+<body class="min-h-screen bg-gradient-to-br from-slate-50 to-sky-50 dark:from-slate-900 dark:to-slate-800 text-slate-800 dark:text-slate-100 font-sans flex flex-col">
 
-<body class="bg-gradient-to-br from-gray-100 to-blue-100 dark:from-gray-900 dark:to-gray-800 text-gray-800 dark:text-gray-100 min-h-screen font-sans flex flex-col transition-all">
+  <!-- Topbar -->
+  <header class="sticky top-0 z-40 bg-white/70 dark:bg-slate-900/60 backdrop-blur glass border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-12 h-12 rounded-lg bg-gradient-to-tr from-blue-500 to-cyan-400 flex items-center justify-center text-white shadow-lg animate-float">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 12h18M12 3v18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="leading-tight">
+          <div class="font-semibold text-sm md:text-base">AMIT</div>
+          <div class="text-xs text-slate-500 dark:text-slate-400">Software • Videos • Learning</div>
+        </div>
+      </a>
 
-  <!-- Header -->
-<header class="flex items-center justify-between py-4 px-6 md:px-12 shadow-md bg-white dark:bg-gray-900">
-  <div class="flex items-center gap-4">
-    <div class="font-mono text-xs sm:text-base md:text-lg whitespace-pre leading-tight">
-<pre>
-   A     M   M   III  TTTTT
-  A A    MM MM    I     T  
- AAAAA   M M M    I     T  
-A     A  M   M    I     T  
-A     A  M   M   III    T  
-</pre>
+      <nav class="hidden md:flex items-center gap-4">
+        <a href="software.html" class="px-3 py-2 rounded-md text-sm hover:bg-slate-100 dark:hover:bg-slate-800">Software</a>
+        <a href="videos.html" class="px-3 py-2 rounded-md text-sm hover:bg-slate-100 dark:hover:bg-slate-800">Videos</a>
+        <a href="anime.html" class="px-3 py-2 rounded-md text-sm hover:bg-slate-100 dark:hover:bg-slate-800">Anime</a>
+        <a href="course.html" class="px-3 py-2 rounded-md text-sm hover:bg-slate-100 dark:hover:bg-slate-800">Courses</a>
+        <a href="https://github.com/Apeiro7?tab=repositories" target="_blank" rel="noopener" class="px-3 py-2 rounded-md text-sm hover:bg-slate-100 dark:hover:bg-slate-800">GitHub</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <button id="theme-toggle" aria-label="Toggle theme" class="p-2 rounded-full bg-slate-100 dark:bg-slate-800 shadow hover:scale-105 transition">
+          <span id="theme-emoji">🌙</span>
+        </button>
+        <button id="menu-mobile" aria-expanded="false" class="md:hidden p-2 rounded-md">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
     </div>
-  </div>
-  <!-- Move button to the right -->
-  <div>
-    <button id="theme-toggle" class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white px-4 py-2 rounded-full shadow hover:shadow-lg transition">
-      🌙 Dark Mode
-    </button>
-  </div>
-</header>
-  
+  </header>
+
   <!-- Hero -->
-  <section class="text-center py-16 px-4 bg-gradient-to-b from-blue-50 dark:from-gray-800 to-transparent">
-    <h1 class="text-4xl font-bold mb-4 tracking-tight">Welcome!!!</h1>
-    <p class="text-lg text-gray-600 dark:text-gray-300 max-w-xl mx-auto">Explore software, videos, anime, and learning content—all in one place.</p>
+  <section class="relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 py-16 md:py-24 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div>
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">Welcome to <span class="cta-grad">AMIT</span></h1>
+        <p class="mt-4 text-slate-600 dark:text-slate-300 max-w-xl">All your favourite software, curated video content, anime collections and practical courses — thoughtfully organized and easy to explore. Fast, responsive, and built for learners.</p>
+
+        <div class="mt-6 flex gap-3">
+          <a href="software.html" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-medium shadow-lg hover:scale-105 transition">Explore Software
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+          </a>
+          <a href="videos.html" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 bg-white/60 dark:bg-slate-800/40 hover:shadow-md transition">Watch Videos</a>
+        </div>
+
+        <div class="mt-8 flex items-center gap-4 text-sm text-slate-500">
+          <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span> Live updates</div>
+          <div class="flex items-center gap-2">🚀 Fast delivery</div>
+          <div class="flex items-center gap-2">🔒 Safe & legal</div>
+        </div>
+      </div>
+
+      <!-- Animated grid of feature cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <a href="software.html" class="group relative p-4 rounded-2xl shadow-card hover:shadow-2xl transform hover:-translate-y-2 transition bg-white dark:bg-slate-800">
+          <div class="absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition pointer-events-none border border-transparent group-hover:border-blue-400"></div>
+          <div class="flex items-start gap-3">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-blue-500 to-cyan-400 flex items-center justify-center text-white text-xl">🧩</div>
+            <div>
+              <div class="font-semibold">Software Section</div>
+              <div class="text-xs text-slate-500 dark:text-slate-400">Tools, installers, and utilities — curated & safe.</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="videos.html" class="group p-4 rounded-2xl shadow-card hover:shadow-2xl transform hover:-translate-y-2 transition bg-white dark:bg-slate-800">
+          <div class="flex items-start gap-3">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-purple-500 to-pink-400 flex items-center justify-center text-white text-xl">🎥</div>
+            <div>
+              <div class="font-semibold">Video Library</div>
+              <div class="text-xs text-slate-500 dark:text-slate-400">Stream or download lessons and media.</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="anime.html" class="group p-4 rounded-2xl shadow-card hover:shadow-2xl transform hover:-translate-y-2 transition bg-white dark:bg-slate-800">
+          <div class="flex items-start gap-3">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-pink-500 to-rose-400 flex items-center justify-center text-white text-xl">🌸</div>
+            <div>
+              <div class="font-semibold">Anime Collection</div>
+              <div class="text-xs text-slate-500 dark:text-slate-400">Curated series & movies with descriptions.</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="course.html" class="group p-4 rounded-2xl shadow-card hover:shadow-2xl transform hover:-translate-y-2 transition bg-white dark:bg-slate-800">
+          <div class="flex items-start gap-3">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-green-500 to-emerald-400 flex items-center justify-center text-white text-xl">📚</div>
+            <div>
+              <div class="font-semibold">Courses</div>
+              <div class="text-xs text-slate-500 dark:text-slate-400">Video courses, notes, and practice material.</div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- decorative SVG waves -->
+    <svg class="pointer-events-none absolute right-0 top-6 opacity-30" width="400" height="400" viewBox="0 0 400 400" fill="none" aria-hidden>
+      <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#60A5FA"/><stop offset="1" stop-color="#06B6D4"/></linearGradient></defs>
+      <circle cx="50" cy="50" r="120" fill="url(#g)"/>
+    </svg>
   </section>
 
-  <!-- Cards Grid -->
-  <main class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6 md:px-12 pb-20 max-w-7xl mx-auto">
-    <!-- Reusable card component -->
-    <a href="software.html" class="group bg-white dark:bg-gray-800 p-6 rounded-xl shadow-card hover:shadow-2xl transition transform hover:-translate-y-1 text-center">
-      <div class="text-4xl mb-4">🧩</div>
-      <h2 class="text-2xl font-semibold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">Software Section</h2>
-      <p class="text-sm text-gray-500 dark:text-gray-300">Explore and download useful software and tools.</p>
-    </a>
+  <!-- Main content - cards grid -->
+  <main class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <section class="md:col-span-2 space-y-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Reusable card -->
+        <a href="software.html" class="group block p-6 rounded-2xl bg-white dark:bg-slate-800 shadow-card hover:shadow-2xl transform hover:-translate-y-3 transition">
+          <div class="flex items-center justify-between">
+            <div class="text-3xl">🧩</div>
+            <div class="text-xs text-slate-400">Updated 2025</div>
+          </div>
+          <h3 class="mt-4 font-semibold text-lg group-hover:text-blue-600">Software</h3>
+          <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">Trusted utilities and developer tools with short descriptions.</p>
+        </a>
 
-    <a href="videos.html" class="group bg-white dark:bg-gray-800 p-6 rounded-xl shadow-card hover:shadow-2xl transition transform hover:-translate-y-1 text-center">
-      <div class="text-4xl mb-4">🎥</div>
-      <h2 class="text-2xl font-semibold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">Video Section</h2>
-      <p class="text-sm text-gray-500 dark:text-gray-300">Stream and manage your video library.</p>
-    </a>
+        <a href="videos.html" class="group block p-6 rounded-2xl bg-white dark:bg-slate-800 shadow-card hover:shadow-2xl transform hover:-translate-y-3 transition">
+          <div class="flex items-center justify-between">
+            <div class="text-3xl">🎥</div>
+            <div class="text-xs text-slate-400">Curated</div>
+          </div>
+          <h3 class="mt-4 font-semibold text-lg group-hover:text-purple-600">Videos</h3>
+          <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">Tutorials, talks, and entertainment clips organized by topic.</p>
+        </a>
 
-    <a href="anime.html" class="group bg-white dark:bg-gray-800 p-6 rounded-xl shadow-card hover:shadow-2xl transition transform hover:-translate-y-1 text-center">
-      <div class="text-4xl mb-4">🌸</div>
-      <h2 class="text-2xl font-semibold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">Anime Section</h2>
-      <p class="text-sm text-gray-500 dark:text-gray-300">Watch anime content from curated collections.</p>
-    </a>
+        <a href="anime.html" class="group block p-6 rounded-2xl bg-white dark:bg-slate-800 shadow-card hover:shadow-2xl transform hover:-translate-y-3 transition">
+          <div class="flex items-center justify-between">
+            <div class="text-3xl">🌸</div>
+            <div class="text-xs text-slate-400">Top Picks</div>
+          </div>
+          <h3 class="mt-4 font-semibold text-lg group-hover:text-pink-600">Anime</h3>
+          <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">Series summaries and recommended watch order.</p>
+        </a>
 
-    <a href="https://apeiro7.github.io/web2/" class="group bg-white dark:bg-gray-800 p-6 rounded-xl shadow-card hover:shadow-2xl transition transform hover:-translate-y-1 text-center">
-      <div class="text-4xl mb-4">💻</div>
-      <h2 class="text-2xl font-semibold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">Websites</h2>
-      <p class="text-sm text-gray-500 dark:text-gray-300">Acces all Web Pages</p>
-    </a>
-    
-    <a href="course.html" class="group bg-white dark:bg-gray-800 p-6 rounded-xl shadow-card hover:shadow-2xl transition transform hover:-translate-y-1 text-center">
-      <div class="text-4xl mb-4">📚</div>
-      <h2 class="text-2xl font-semibold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">Online Courses</h2>
-      <p class="text-sm text-gray-500 dark:text-gray-300">Learn from video courses, tutorials, and documents.</p>
-    </a>
+      </div>
 
-    <a href="https://github.com/Apeiro7?tab=repositories" target="_blank" class="group bg-white dark:bg-gray-800 p-6 rounded-xl shadow-card hover:shadow-2xl transition transform hover:-translate-y-1 text-center">
-      <div class="text-4xl mb-4">💻</div>
-      <h2 class="text-2xl font-semibold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">GitHub Repo</h2>
-      <p class="text-sm text-gray-500 dark:text-gray-300">Browse the source code, contribute, or report issues.</p>
-    </a>
+      <div class="p-6 rounded-2xl bg-gradient-to-tr from-white to-slate-50 dark:from-slate-800 dark:to-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
+        <h3 class="font-semibold text-lg">About this site</h3>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">This site is a personal project showcasing curated digital content — meant for learning and distribution of free resources. Replace this section with a short bio, contact info, or changelog.</p>
+      </div>
+    </section>
+
+    <!-- Right column - small widgets -->
+    <aside class="space-y-6">
+      <div class="p-4 rounded-2xl bg-white dark:bg-slate-800 shadow-card">
+        <div class="flex items-center justify-between">
+          <div>
+            <div class="text-xs text-slate-400">Status</div>
+            <div class="font-semibold">All systems operational</div>
+          </div>
+          <div class="text-green-400">●</div>
+        </div>
+      </div>
+
+      <div class="p-4 rounded-2xl bg-white dark:bg-slate-800 shadow-card">
+        <div class="text-xs text-slate-400">Follow</div>
+        <div class="mt-3 flex gap-3">
+          <a href="#" class="p-2 rounded-md shimmer">GitHub</a>
+          <a href="#" class="p-2 rounded-md shimmer">Twitter</a>
+        </div>
+      </div>
+
+      <div class="p-4 rounded-2xl bg-gradient-to-r from-indigo-500 to-cyan-500 text-white shadow-lg">
+        <div class="text-xs opacity-80">Pro Tip</div>
+        <div class="mt-2 font-semibold">Use GitHub Pages to host this site for free.</div>
+      </div>
+    </aside>
   </main>
 
   <!-- Footer -->
-  <footer class="mt-auto bg-white dark:bg-gray-900 border-t dark:border-gray-700 text-center py-6 text-sm text-gray-600 dark:text-gray-400">
-    © 2025 AMIT. Built with ❤️ using TailwindCSS.
+  <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 backdrop-blur py-6">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="text-sm text-slate-600 dark:text-slate-400">© 2025 AMIT. Built with ❤️ and Tailwind CSS.</div>
+      <div class="flex items-center gap-4 text-sm text-slate-500">
+        <a href="#" class="hover:underline">Privacy</a>
+        <a href="#" class="hover:underline">Terms</a>
+        <a href="#" class="hover:underline">Contact</a>
+      </div>
+    </div>
   </footer>
 
-  <!-- Theme Toggle Script -->
+  <!-- Mobile menu (simple) -->
+  <div id="mobile-menu" class="fixed inset-0 z-50 hidden bg-black/40 md:hidden" aria-hidden>
+    <div class="absolute right-4 top-4 bg-white dark:bg-slate-800 p-4 rounded-lg shadow-lg w-64">
+      <nav class="flex flex-col gap-2">
+        <a href="software.html" class="p-2 rounded-md">Software</a>
+        <a href="videos.html" class="p-2 rounded-md">Videos</a>
+        <a href="anime.html" class="p-2 rounded-md">Anime</a>
+        <a href="course.html" class="p-2 rounded-md">Courses</a>
+      </nav>
+    </div>
+  </div>
+
   <script>
-    const themeToggle = document.getElementById('theme-toggle');
+    // Theme toggle
     const html = document.documentElement;
-
-    function updateThemeUI() {
-      const isDark = html.classList.contains('dark');
-      themeToggle.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
-    }
-
-    if (localStorage.getItem('theme') === 'dark') {
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeEmoji = document.getElementById('theme-emoji');
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       html.classList.add('dark');
+      themeEmoji.textContent = '☀️';
+    } else {
+      themeEmoji.textContent = '🌙';
     }
-
-    updateThemeUI();
-
     themeToggle.addEventListener('click', () => {
       html.classList.toggle('dark');
-      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
-      updateThemeUI();
+      const isDark = html.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      themeEmoji.textContent = isDark ? '☀️' : '🌙';
     });
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menu-mobile');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('hidden');
+      menuBtn.setAttribute('aria-expanded', String(!open));
+    });
+
+    // Accessibility: reduce motion respect is handled via CSS media query above
   </script>
 
 </body>
