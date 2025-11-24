@@ -1,10 +1,11 @@
 <!-- HEADER BANNER -->
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=26&duration=2800&pause=700&color=22C55E&center=true&vCenter=true&width=700&lines=Welcome+to+AMIT+HUB+🌐;All-in-One+Software+%2F+Videos+%2F+Anime+%2F+Courses;Beautiful+UI+with+TailwindCSS+%26+Dark+Mode;Fast+GitHub+Pages+Deployment+🚀" alt="Typing SVG" />
+  <strong style="font-size: 26px;">🌐 AMIT HUB</strong><br/>
+  <sub>All-in-one Software • Videos • Anime • Courses dashboard</sub>
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" width="100%" alt="Rainbow Divider" />
+  <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" width="100%" />
 </p>
 
 <br />
