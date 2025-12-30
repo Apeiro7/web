@@ -1,43 +1,104 @@
-<script>
-  const game = new Chess();
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chess</title>
 
-  const board = Chessboard('board', {
-    draggable: true,
-    position: 'start',
-    onDrop: onDrop
-  });
+  <!-- Chessboard CSS -->
+  <link rel="stylesheet"
+        href="https://unpkg.com/chessboardjs@1.0.0/dist/chessboard.min.css"/>
 
-  function onDrop(source, target) {
-    const move = game.move({
-      from: source,
-      to: target,
-      promotion: 'q'
-    });
-
-    if (move === null) return 'snapback';
-    updateStatus();
-  }
-
-  function updateStatus() {
-    let status = '';
-
-    if (game.in_checkmate()) {
-      status = 'Checkmate!';
-    } else if (game.in_draw()) {
-      status = 'Draw!';
-    } else {
-      status = (game.turn() === 'w' ? 'White' : 'Black') + ' to move';
-      if (game.in_check()) status += ' (Check)';
+  <style>
+    body {
+      background: #0f172a;
+      color: #e5e7eb;
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
     }
 
-    document.getElementById('status').textContent = status;
-  }
+    #board {
+      width: 380px;
+      margin: 20px auto;
+    }
 
-  document.getElementById('reset').addEventListener('click', () => {
-    game.reset();
-    board.position('start', true); // ✅ FIX
+    #status {
+      margin: 10px 0;
+      font-weight: bold;
+    }
+
+    button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      background: #2563eb;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>♟️ Chess</h1>
+<div id="board"></div>
+<div id="status"></div>
+<button id="reset">New Game</button>
+
+<!-- JS libraries MUST be before app code -->
+<script src="https://unpkg.com/chess.js@1.0.0/chess.min.js"></script>
+<script src="https://unpkg.com/chessboardjs@1.0.0/dist/chessboard.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const game = new Chess();
+
+    const board = Chessboard('board', {
+      draggable: true,
+      position: 'start',
+      onDrop: onDrop
+    });
+
+    function onDrop(source, target) {
+      const move = game.move({
+        from: source,
+        to: target,
+        promotion: 'q'
+      });
+
+      if (move === null) return 'snapback';
+      updateStatus();
+    }
+
+    function updateStatus() {
+      let status = '';
+
+      if (game.in_checkmate()) {
+        status = 'Checkmate!';
+      } else if (game.in_draw()) {
+        status = 'Draw!';
+      } else {
+        status = (game.turn() === 'w' ? 'White' : 'Black') + ' to move';
+        if (game.in_check()) status += ' (Check)';
+      }
+
+      document.getElementById('status').textContent = status;
+    }
+
+    document.getElementById('reset').addEventListener('click', () => {
+      game.reset();
+      board.position('start', true);
+      updateStatus();
+    });
+
     updateStatus();
   });
-
-  updateStatus();
 </script>
+
+</body>
+</html>
