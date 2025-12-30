@@ -4,41 +4,28 @@
   <meta charset="UTF-8">
   <title>Chess</title>
 
-  <!-- Chessboard CSS -->
   <link rel="stylesheet"
-        href="https://unpkg.com/chessboardjs@1.0.0/dist/chessboard.min.css"/>
+        href="https://cdnjs.cloudflare.com/ajax/libs/chessboardjs/1.0.0/chessboard-1.0.0.min.css">
 
   <style>
     body {
-      background: #0f172a;
-      color: #e5e7eb;
+      background: #0b1220;
+      color: white;
       font-family: system-ui, sans-serif;
-      margin: 0;
-      padding: 20px;
       text-align: center;
+      padding: 20px;
     }
-
     #board {
       width: 380px;
       margin: 20px auto;
     }
-
-    #status {
-      margin: 10px 0;
-      font-weight: bold;
-    }
-
     button {
       padding: 8px 16px;
-      border: none;
       border-radius: 6px;
+      border: none;
       background: #2563eb;
       color: white;
       cursor: pointer;
-    }
-
-    button:hover {
-      background: #1d4ed8;
     }
   </style>
 </head>
@@ -47,57 +34,32 @@
 
 <h1>♟️ Chess</h1>
 <div id="board"></div>
-<div id="status"></div>
 <button id="reset">New Game</button>
 
-<!-- JS libraries MUST be before app code -->
-<script src="https://unpkg.com/chess.js@1.0.0/chess.min.js"></script>
-<script src="https://unpkg.com/chessboardjs@1.0.0/dist/chessboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.13.4/chess.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chessboardjs/1.0.0/chessboard-1.0.0.min.js"></script>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const game = new Chess();
+  const game = new Chess();
 
-    const board = Chessboard('board', {
-      draggable: true,
-      position: 'start',
-      onDrop: onDrop
-    });
-
-    function onDrop(source, target) {
+  const board = Chessboard('board', {
+    draggable: true,
+    position: 'start',
+    onDrop: (source, target) => {
       const move = game.move({
         from: source,
         to: target,
         promotion: 'q'
       });
-
       if (move === null) return 'snapback';
-      updateStatus();
     }
-
-    function updateStatus() {
-      let status = '';
-
-      if (game.in_checkmate()) {
-        status = 'Checkmate!';
-      } else if (game.in_draw()) {
-        status = 'Draw!';
-      } else {
-        status = (game.turn() === 'w' ? 'White' : 'Black') + ' to move';
-        if (game.in_check()) status += ' (Check)';
-      }
-
-      document.getElementById('status').textContent = status;
-    }
-
-    document.getElementById('reset').addEventListener('click', () => {
-      game.reset();
-      board.position('start', true);
-      updateStatus();
-    });
-
-    updateStatus();
   });
+
+  document.getElementById('reset').onclick = () => {
+    game.reset();
+    board.position('start', true);
+  };
 </script>
 
 </body>
