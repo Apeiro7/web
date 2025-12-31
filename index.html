@@ -14,8 +14,9 @@
   <title>AMIT — Software • Movies & Webseries • Courses</title>
   <link rel="icon" href="favicon.ico" />
 
-  <!-- Tailwind CDN (simple + reliable for GitHub Pages) -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -83,6 +84,15 @@
       from { background-position: -200% 0; }
       to { background-position: 200% 0; }
     }
+    /* Simple pop animation for logo click */
+    .pop-active {
+        animation: pop 0.3s ease-out;
+    }
+    @keyframes pop {
+        0% { transform: scale(1); }
+        50% { transform: scale(0.9); }
+        100% { transform: scale(1); }
+    }
     @media (prefers-reduced-motion: reduce) {
       * {
         animation: none !important;
@@ -96,15 +106,13 @@
   class="min-h-screen bg-gradient-to-br from-slate-50 to-sky-50 dark:from-slate-900 dark:to-slate-800 text-slate-800 dark:text-slate-100 font-sans flex flex-col"
 >
 
-  <!-- HEADER -->
   <header
     class="sticky top-0 z-40 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/70 backdrop-blur glass"
   >
     <div
       class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-3"
     >
-      <!-- Logo / Brand -->
-      <a href="#" class="flex items-center gap-3">
+      <div id="brand-logo" class="flex items-center gap-3 cursor-pointer select-none">
         <div
           class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-tr from-blue-500 to-cyan-400 flex items-center justify-center text-white shadow-lg animate-float"
         >
@@ -118,9 +126,8 @@
             Software • Movies & Webseries • Learning
           </div>
         </div>
-      </a>
+      </div>
 
-      <!-- Desktop nav -->
       <nav class="hidden md:flex items-center gap-2 text-sm">
         <a
           href="software.html"
@@ -156,9 +163,7 @@
         >
       </nav>
 
-      <!-- Right controls -->
       <div class="flex items-center gap-2">
-        <!-- Theme toggle -->
         <button
           id="theme-toggle"
           aria-label="Toggle theme"
@@ -167,7 +172,6 @@
           <span id="theme-emoji">🌙</span>
         </button>
 
-        <!-- Mobile menu button -->
         <button
           id="mobile-open"
           aria-expanded="false"
@@ -192,7 +196,6 @@
     </div>
   </header>
 
-  <!-- MOBILE MENU -->
   <div id="mobile-menu" class="fixed inset-0 z-50 hidden">
     <div
       id="mobile-backdrop"
@@ -258,12 +261,10 @@
     </div>
   </div>
 
-  <!-- HERO -->
   <section class="relative">
     <div
       class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 md:py-20 grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
     >
-      <!-- Text -->
       <div>
         <h1
           class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight tracking-tight"
@@ -317,7 +318,6 @@
         </div>
       </div>
 
-      <!-- Feature quick cards -->
       <div class="grid grid-cols-2 gap-4 w-full">
         <a
           href="software.html"
@@ -398,11 +398,9 @@
     </div>
   </section>
 
-  <!-- MAIN CONTENT -->
   <main
     class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 grid grid-cols-1 md:grid-cols-3 gap-6"
   >
-    <!-- Left (cards + about) -->
     <section class="md:col-span-2 space-y-6">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <a
@@ -466,7 +464,6 @@
       </div>
     </section>
 
-    <!-- Right column widgets -->
     <aside class="space-y-4">
       <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 shadow-card">
         <div class="flex items-center justify-between">
@@ -509,7 +506,6 @@
     </aside>
   </main>
 
-  <!-- FOOTER -->
   <footer
     class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white/75 dark:bg-slate-900/75 backdrop-blur py-5"
   >
@@ -527,7 +523,6 @@
     </div>
   </footer>
 
-  <!-- SCRIPTS -->
   <script>
     const html = document.documentElement;
     const themeToggle = document.getElementById('theme-toggle');
@@ -575,6 +570,47 @@
 
     // Better touch behaviour on mobile
     document.documentElement.style.touchAction = 'manipulation';
+
+    // ✨ 3. NEW FEATURE: Google-Style Fireworks Logic
+    function triggerFireworks() {
+      var duration = 5 * 1000; // Lasts 5 seconds
+      var animationEnd = Date.now() + duration;
+      var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
+
+      function randomInRange(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      var interval = setInterval(function() {
+        var timeLeft = animationEnd - Date.now();
+
+        if (timeLeft <= 0) {
+          return clearInterval(interval);
+        }
+
+        var particleCount = 50 * (timeLeft / duration);
+        // Fires from two sides like fireworks
+        confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } });
+        confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
+      }, 250);
+    }
+
+    // Trigger on page load
+    window.addEventListener('load', triggerFireworks);
+
+    // Trigger on clicking the Logo (Google style Easter egg)
+    const brandLogo = document.getElementById('brand-logo');
+    if(brandLogo) {
+      brandLogo.addEventListener('click', (e) => {
+        // Prevent default only if it's a link (here it is a div, so it's fine)
+        triggerFireworks();
+        
+        // Add a little pop effect
+        brandLogo.classList.remove('pop-active');
+        void brandLogo.offsetWidth; // trigger reflow
+        brandLogo.classList.add('pop-active');
+      });
+    }
   </script>
 </body>
 </html>
