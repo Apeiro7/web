@@ -96,9 +96,436 @@
   class="min-h-screen bg-gradient-to-br from-slate-50 to-sky-50 dark:from-slate-900 dark:to-slate-800 text-slate-800 dark:text-slate-100 font-sans flex flex-col"
 >
 
-  <!-- ALL YOUR ORIGINAL HTML CONTENT IS UNCHANGED -->
-  <!-- HEADER, MENU, HERO, MAIN, FOOTER ... -->
-  <!-- (exactly same as you sent) -->
+  <!-- HEADER -->
+  <header
+    class="sticky top-0 z-40 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/70 backdrop-blur glass"
+  >
+    <div
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-3"
+    >
+      <!-- Logo / Brand -->
+      <a href="#" class="flex items-center gap-3">
+        <div
+          class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-tr from-blue-500 to-cyan-400 flex items-center justify-center text-white shadow-lg animate-float"
+        >
+          <span class="font-mono font-bold text-lg">A</span>
+        </div>
+        <div class="leading-tight">
+          <div class="font-semibold text-sm sm:text-base">AMIT</div>
+          <div
+            class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400"
+          >
+            Software • Movies & Webseries • Learning
+          </div>
+        </div>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-2 text-sm">
+        <a
+          href="software.html"
+          class="px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800"
+          >Software</a
+        >
+        <a
+          href="videos.html"
+          class="px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800"
+          >Movies & Webseries</a
+        >
+        <a
+          href="anime.html"
+          class="px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800"
+          >Anime</a
+        >
+        <a
+          href="course.html"
+          class="px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800"
+          >Courses</a
+        >
+        <a
+          href="web2/index.html"
+          class="px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800"
+          >Websites</a
+        >
+        <a
+          href="https://github.com/Apeiro7?tab=repositories"
+          target="_blank"
+          rel="noopener"
+          class="px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800"
+          >GitHub</a
+        >
+      </nav>
+
+      <!-- Right controls -->
+      <div class="flex items-center gap-2">
+        <!-- Theme toggle -->
+        <button
+          id="theme-toggle"
+          aria-label="Toggle theme"
+          class="p-2 rounded-full bg-slate-100 dark:bg-slate-800 shadow focus:outline-none focus:ring-2 focus:ring-blue-400"
+        >
+          <span id="theme-emoji">🌙</span>
+        </button>
+
+        <!-- Mobile menu button -->
+        <button
+          id="mobile-open"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          class="md:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+        >
+          <svg
+            class="w-6 h-6"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div id="mobile-menu" class="fixed inset-0 z-50 hidden">
+    <div
+      id="mobile-backdrop"
+      class="absolute inset-0 bg-black/40"
+      aria-hidden="true"
+    ></div>
+
+    <div
+      class="absolute right-0 top-0 w-72 max-w-full h-full bg-white dark:bg-slate-800 shadow-xl p-4 flex flex-col"
+    >
+      <div class="flex items-center justify-between mb-4">
+        <div class="font-semibold text-sm">Menu</div>
+        <button id="mobile-close" class="p-2 rounded-md">
+          <svg
+            class="w-5 h-5"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+          >
+            <path
+              d="M6 18L18 6M6 6l12 12"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            />
+          </svg>
+        </button>
+      </div>
+      <nav class="flex flex-col gap-2 text-sm">
+        <a
+          href="software.html"
+          class="p-3 rounded-md hover:bg-slate-100 dark:hover:bg-slate-700"
+          >Software</a
+        >
+        <a
+          href="videos.html"
+          class="p-3 rounded-md hover:bg-slate-100 dark:hover:bg-slate-700"
+          >Movies & Webseries</a
+        >
+        <a
+          href="anime.html"
+          class="p-3 rounded-md hover:bg-slate-100 dark:hover:bg-slate-700"
+          >Anime</a
+        >
+        <a
+          href="course.html"
+          class="p-3 rounded-md hover:bg-slate-100 dark:hover:bg-slate-700"
+          >Courses</a
+        >
+        <a
+          href="web2/index.html"
+          class="p-3 rounded-md hover:bg-slate-100 dark:hover:bg-slate-700"
+          >Websites</a
+        >
+        <a
+          href="https://github.com/Apeiro7?tab=repositories"
+          target="_blank"
+          rel="noopener"
+          class="p-3 rounded-md hover:bg-slate-100 dark:hover:bg-slate-700"
+          >GitHub</a
+        >
+      </nav>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="relative">
+    <div
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 md:py-20 grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
+    >
+      <!-- Text -->
+      <div>
+        <h1
+          class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight tracking-tight"
+        >
+          Welcome to <span class="cta-grad">AMIT</span>
+        </h1>
+        <p
+          class="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-xl"
+        >
+          Curated software, video lessons, anime, and courses — designed to be
+          fast and mobile-friendly. Tap any card to explore.
+        </p>
+
+        <div class="mt-6 flex flex-col sm:flex-row gap-3">
+          <a
+            href="software.html"
+            class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-medium shadow-lg hover:scale-[1.02] active:scale-100 transition w-full sm:w-auto"
+          >
+            Explore Software
+            <svg
+              class="w-4 h-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+            >
+              <path
+                d="M5 12h14M13 5l7 7-7 7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+              />
+            </svg>
+          </a>
+          <a
+            href="https://drive.google.com/drive/folders/14oOLq17z54SpnzAGlTbfLvERgRWAcfzi?usp=drive_link"
+            class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100 bg-white/80 dark:bg-slate-900/60 hover:shadow-md transition w-full sm:w-auto"
+          >
+            Epstein Files Transparency Act (H.R.4405)
+          </a>
+        </div>
+
+        <div class="mt-6 flex flex-wrap gap-3 text-xs text-slate-500">
+          <span class="inline-flex items-center gap-2">
+            <span
+              class="w-2 h-2 rounded-full bg-green-400 animate-pulse"
+            ></span>
+            Live updates
+          </span>
+          <span class="inline-flex items-center gap-2"> 🚀 Fast delivery </span>
+          <span class="inline-flex items-center gap-2"> 🔒 Safe & legal </span>
+        </div>
+      </div>
+
+      <!-- Feature quick cards -->
+      <div class="grid grid-cols-2 gap-4 w-full">
+        <a
+          href="software.html"
+          class="group block p-4 rounded-2xl bg-white dark:bg-slate-900 shadow-card hover:shadow-2xl transform hover:-translate-y-1 transition touch-manipulation"
+        >
+          <div class="flex items-start gap-3">
+            <div
+              class="w-12 h-12 rounded-xl bg-gradient-to-tr from-blue-500 to-cyan-400 flex items-center justify-center text-white text-xl"
+            >
+              🧩
+            </div>
+            <div>
+              <div class="font-semibold text-sm">Software</div>
+              <div
+                class="text-xs text-slate-500 dark:text-slate-400"
+              >Tools & utilities</div>
+            </div>
+          </div>
+        </a>
+
+        <a
+          href="videos.html"
+          class="group block p-4 rounded-2xl bg-white dark:bg-slate-900 shadow-card hover:shadow-2xl transform hover:-translate-y-1 transition touch-manipulation"
+        >
+          <div class="flex items-start gap-3">
+            <div
+              class="w-12 h-12 rounded-xl bg-gradient-to-tr from-purple-500 to-pink-400 flex items-center justify-center text-white text-xl"
+            >
+              🎥
+            </div>
+            <div>
+              <div class="font-semibold text-sm">Movies & Webseries</div>
+              <div
+                class="text-xs text-slate-500 dark:text-slate-400"
+              >Tutorials & media</div>
+            </div>
+          </div>
+        </a>
+
+        <a
+          href="anime.html"
+          class="group block p-4 rounded-2xl bg-white dark:bg-slate-900 shadow-card hover:shadow-2xl transform hover:-translate-y-1 transition touch-manipulation"
+        >
+          <div class="flex items-start gap-3">
+            <div
+              class="w-12 h-12 rounded-xl bg-gradient-to-tr from-pink-500 to-rose-400 flex items-center justify-center text-white text-xl"
+            >
+              🌸
+            </div>
+            <div>
+              <div class="font-semibold text-sm">Anime</div>
+              <div
+                class="text-xs text-slate-500 dark:text-slate-400"
+              >Curated picks</div>
+            </div>
+          </div>
+        </a>
+
+        <a
+          href="course.html"
+          class="group block p-4 rounded-2xl bg-white dark:bg-slate-900 shadow-card hover:shadow-2xl transform hover:-translate-y-1 transition touch-manipulation"
+        >
+          <div class="flex items-start gap-3">
+            <div
+              class="w-12 h-12 rounded-xl bg-gradient-to-tr from-green-500 to-emerald-400 flex items-center justify-center text-white text-xl"
+            >
+              📚
+            </div>
+            <div>
+              <div class="font-semibold text-sm">Courses</div>
+              <div
+                class="text-xs text-slate-500 dark:text-slate-400"
+              >Notes & practice</div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main
+    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 grid grid-cols-1 md:grid-cols-3 gap-6"
+  >
+    <!-- Left (cards + about) -->
+    <section class="md:col-span-2 space-y-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a
+          href="software.html"
+          class="group block p-5 rounded-2xl bg-white dark:bg-slate-900 shadow-card hover:shadow-2xl transform hover:-translate-y-2 transition"
+        >
+          <div class="flex items-center justify-between">
+            <div class="text-2xl">🧩</div>
+            <div class="text-xs text-slate-400">Updated</div>
+          </div>
+          <h3
+            class="mt-3 font-semibold text-base group-hover:text-blue-600"
+          >Software</h3>
+          <p
+            class="mt-2 text-xs text-slate-500 dark:text-slate-400"
+          >Secure installers and developer tools.</p>
+        </a>
+
+        <a
+          href="videos.html"
+          class="group block p-5 rounded-2xl bg-white dark:bg-slate-900 shadow-card hover:shadow-2xl transform hover:-translate-y-2 transition"
+        >
+          <div class="flex items-center justify-between">
+            <div class="text-2xl">🎥</div>
+            <div class="text-xs text-slate-400">Curated</div>
+          </div>
+          <h3
+            class="mt-3 font-semibold text-base group-hover:text-purple-600"
+          >Movies & Webseries</h3>
+          <p
+            class="mt-2 text-xs text-slate-500 dark:text-slate-400"
+          >Organized tutorials and talks.</p>
+        </a>
+
+        <a
+          href="anime.html"
+          class="group block p-5 rounded-2xl bg-white dark:bg-slate-900 shadow-card hover:shadow-2xl transform hover:-translate-y-2 transition"
+        >
+          <div class="flex items-center justify-between">
+            <div class="text-2xl">🌸</div>
+            <div class="text-xs text-slate-400">Top Picks</div>
+          </div>
+          <h3
+            class="mt-3 font-semibold text-base group-hover:text-pink-600"
+          >Anime</h3>
+          <p
+            class="mt-2 text-xs text-slate-500 dark:text-slate-400"
+          >Series summaries & watch order.</p>
+        </a>
+      </div>
+
+      <div
+        class="p-5 rounded-2xl bg-gradient-to-tr from-white to-slate-50 dark:from-slate-900 dark:to-slate-900 border border-slate-200 dark:border-slate-700 shadow-sm"
+      >
+        <h3 class="font-semibold text-base">About this site</h3>
+        <p
+          class="mt-2 text-sm text-slate-600 dark:text-slate-300"
+        >
+          Personal project by AMIT ...
+        </p>
+      </div>
+    </section>
+
+    <!-- Right column widgets -->
+    <aside class="space-y-4">
+      <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 shadow-card">
+        <div class="flex items-center justify-between">
+          <div>
+            <div class="text-xs text-slate-400">Status</div>
+            <div class="font-semibold text-sm">All systems operational</div>
+          </div>
+          <div class="text-green-400 text-base">●</div>
+        </div>
+      </div>
+
+      <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 shadow-card">
+        <div class="text-xs text-slate-400">Follow</div>
+        <div class="mt-3 flex gap-3">
+          <a
+            href="https://github.com/Apeiro7"
+            target="_blank"
+            rel="noopener"
+            class="flex-1 p-2 rounded-md text-xs text-center border border-slate-200 dark:border-slate-700 shimmer"
+          >
+            GitHub
+          </a>
+          <a
+            href="#"
+            class="flex-1 p-2 rounded-md text-xs text-center border border-slate-200 dark:border-slate-700 shimmer"
+          >
+            Twitter
+          </a>
+        </div>
+      </div>
+
+      <div
+        class="p-4 rounded-2xl bg-gradient-to-r from-indigo-500 to-cyan-500 text-white shadow-lg text-sm"
+      >
+        <div class="text-xs opacity-80">Pro Tip</div>
+        <div class="mt-2 font-semibold">
+          This entire site runs on free GitHub Pages hosting.
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- FOOTER -->
+  <footer
+    class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white/75 dark:bg-slate-900/75 backdrop-blur py-5"
+  >
+    <div
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-3 text-sm"
+    >
+      <div class="text-slate-600 dark:text-slate-400">
+        © 2024 - 2025 AMIT.
+      </div>
+      <div class="flex items-center gap-4 text-slate-500">
+        <a href="https://raw.githubusercontent.com/Apeiro7/web/refs/heads/main/LICENSE" class="hover:underline">Privacy</a>
+        <a href="#" class="hover:underline">Terms</a>
+        <a href="#" class="hover:underline">Contact</a>
+      </div>
+    </div>
+  </footer>
 
   <!-- SCRIPTS -->
   <script>
@@ -124,6 +551,7 @@
       themeEmoji.textContent = isDark ? '☀️' : '🌙';
     });
 
+    // Mobile menu
     const mobileOpen = document.getElementById('mobile-open');
     const mobileClose = document.getElementById('mobile-close');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -145,57 +573,8 @@
     mobileClose.addEventListener('click', closeMenu);
     mobileBackdrop.addEventListener('click', closeMenu);
 
+    // Better touch behaviour on mobile
     document.documentElement.style.touchAction = 'manipulation';
   </script>
-
-  <!-- 🔥 ADDED BELOW (NOT TOUCHING ANYTHING ABOVE) -->
-
-  <!-- Confetti library -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
-
-  <!-- Firework + Emoji animation -->
-  <script>
-    function fireworkBurst() {
-      const colors = ['#ff004c', '#00eaff', '#ffd700', '#a855f7', '#22c55e'];
-
-      // 🎇 Firework blast
-      confetti({
-        particleCount: 160,
-        spread: 360,
-        startVelocity: 45,
-        gravity: 0.9,
-        ticks: 300,
-        origin: { x: 0.5, y: 0.45 },
-        colors
-      });
-
-      // 🎊 Emoji confetti
-      confetti({
-        particleCount: 40,
-        spread: 120,
-        startVelocity: 35,
-        gravity: 0.8,
-        ticks: 200,
-        origin: { x: 0.5, y: 0.45 },
-        shapes: ['text'],
-        scalar: 1.4,
-        drawShape: ctx => {
-          const emojis = ['🎉', '✨', '🎆'];
-          ctx.font = '22px serif';
-          ctx.fillText(
-            emojis[Math.floor(Math.random() * emojis.length)],
-            0,
-            0
-          );
-        }
-      });
-    }
-
-    // Auto run ONCE on page load
-    window.addEventListener('load', () => {
-      setTimeout(fireworkBurst, 700);
-    });
-  </script>
-
 </body>
 </html>
