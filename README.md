@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Apeiro7/assets/rainbow.png" width="100%" />
+  <img src="https://raw.githubusercontent.com/Apeiro7/web/main/assets/rainbow.png" width="100%" />
 </p>
 
 <br />
