@@ -26,8 +26,7 @@ Built with **pure HTML + TailwindCSS**, hosted on **GitHub Pages**, and designed
 
 ## ✨ Demo & Live Site
 
-- 🔗 **Live URL:** `https://your-username.github.io/your-repo-name/`  
-  _(replace with your actual GitHub Pages link)_
+- 🔗 **Live URL:** `https://amits.ddns.net/`
 
 - 📁 Hosted with: **GitHub Pages**  
 - ⚡ No backend. Just **HTML + CSS + tiny JS**.
