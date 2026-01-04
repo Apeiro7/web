@@ -1,6 +1,6 @@
 <!-- HEADER BANNER -->
 <p align="center">
-  <strong style="font-size: 26px;">🌐 AMIT HUB</strong><br/>
+  <strong style="font-size: 26px;">🌐 ANIME HUB</strong><br/>
   <sub>All-in-one Software • Videos • Anime • Courses dashboard</sub>
 </p>
 
@@ -12,7 +12,7 @@
 
 <div align="center">
 
-## 🌐 AMIT HUB
+## 🌐 ANIME HUB
 
 **A beautiful, mobile-first personal dashboard** that brings together:
 
