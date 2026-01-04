@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased">
+<head>
+  <meta charset="UTF-8" />
+  <title>Movies & Webseries • Anime Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Inter", "ui-sans-serif", "system-ui"],
+          },
+          boxShadow: {
+            card: "0 10px 30px rgba(15,23,42,0.15)"
+          },
+          keyframes: {
+            float: {
+              "0%": { transform: "translateY(0)" },
+              "50%": { transform: "translateY(-6px)" },
+              "100%": { transform: "translateY(0)" },
+            },
+          },
+          animation: {
+            float: "float 6s ease-in-out infinite",
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    .glass {
+      background: rgba(255,255,255,.65);
+      backdrop-filter: blur(6px);
+    }
+    .dark .glass {
+      background: rgba(15,23,42,0.55);
+    }
+    .cta-grad {
+      background: linear-gradient(90deg,#06b6d4,#3b82f6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-br from-slate-50 to-sky-50 dark:from-slate-900 dark:to-slate-800 min-h-screen text-slate-800 dark:text-slate-100 font-sans flex flex-col">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 glass border-b border-slate-200 dark:border-slate-800 px-4 sm:px-6 py-4">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-purple-500 to-indigo-500 flex items-center justify-center text-white text-xl shadow-lg animate-float">
+          🎞️
+        </div>
+        <h1 class="font-bold text-lg sm:text-xl tracking-tight">Video Library</h1>
+      </a>
+
+      <button id="theme-toggle" class="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-xl">
+        🌙
+      </button>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
+    <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">
+      Stream <span class="cta-grad">Your Collections</span>
+    </h2>
+    <p class="text-slate-600 dark:text-slate-300 max-w-xl mb-8 text-sm sm:text-base">
+      Open a folder, choose an episode or stream, and preview it directly in the player below each section.
+    </p>
+
+
+    <div class="space-y-4">
+
+        <!-- Movie Card -->
+        <a
+          href="https://drive.google.com/drive/folders/14oOLq17z54SpnzAGlTbfLvERgRWAcfzi?usp=drive_link"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group block p-6 rounded-2xl bg-white dark:bg-slate-900 shadow-card hover:shadow-2xl hover:-translate-y-2 transition"
+        >
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-indigo-500 to-blue-500 flex items-center justify-center text-white text-xl">
+              🚨
+            </div>
+            <h3 class="text-xl font-semibold group-hover:text-indigo-500 transition">
+              Epstein Files
+            </h3>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-slate-300">
+            Epstein Files Transparency Act (H.R.4405)
+          </p>
+        </a>
+
+        <!-- Movie Card -->
+        <a
+          href="https://lok-lok.cc/spa/videoPlayPage/movies/stranger-things-hindi-Aw3jeTNwZX3?id=3330020475752907416&type=/movie/detail&lang=en"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group block p-6 rounded-2xl bg-white dark:bg-slate-900 shadow-card hover:shadow-2xl hover:-translate-y-2 transition"
+        >
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-indigo-500 to-blue-500 flex items-center justify-center text-white text-xl">
+              📦
+            </div>
+            <h3 class="text-xl font-semibold group-hover:text-indigo-500 transition">
+              Stranger Things S05
+            </h3>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-slate-300">
+            Watch Stranger Things S05 in 1080p
+          </p>
+        </a>
+      
+      <!-- Movies 2025 -->
+      <details class="video-folder bg-white dark:bg-slate-900 rounded-2xl p-4 shadow-card">
+        <summary class="cursor-pointer font-semibold text-lg flex items-center justify-between">
+          <span>📁 Movies 2025</span>
+          <span class="text-xs text-slate-500 dark:text-slate-400">Tap to expand</span>
+        </summary>
+
+        <div class="mt-4 space-y-2 text-sm">
+          <div><span class="font-semibold">Dhurandhar 2025 (Google Drive):</span>
+            <a href="#" class="watch-link text-blue-500 hover:underline" data-src="https://drive.google.com/file/d/1HnKmnMdEP20ZE3qjiFaDuJMHerNg4oXt/preview">Watch Here</a>
+          </div>
+          <div><span class="font-semibold">Dhurandhar 2025 (Abyss Player):</span>
+            <a href="#" class="watch-link text-blue-500 hover:underline" data-src="https://short.icu/IGFnOuXhDt">Watch Here</a>
+          </div>
+        </div>
+
+        <div class="preview-container mt-4 hidden">
+          <iframe class="w-full h-64 rounded-lg shadow" src="" allowfullscreen loading="lazy"></iframe>
+          <button class="stop-preview mt-2 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 text-sm">
+            ⛔ Stop Preview
+          </button>
+        </div>
+      </details>
+
+
+      <!-- Strangers Things 5 -->
+      <details class="video-folder bg-white dark:bg-slate-900 rounded-2xl p-4 shadow-card">
+        <summary class="cursor-pointer font-semibold text-lg flex items-center justify-between">
+          <span>📁 Stranger Things S 05(Premium quality)</span>
+          <span class="text-xs text-slate-500 dark:text-slate-400">Tap to expand</span>
+        </summary>
+
+        <div class="mt-4 space-y-2 text-sm">
+          <div><span class="font-semibold">S05 E01 1080P:</span>
+            <a href="#" class="watch-link text-blue-500 hover:underline" data-src="https://drive.google.com/file/d/1k7LkspWOtdH5zygkLtdnmVGlP9Oz-xRV/preview">Watch Here</a>
+          </div>
+          <div><span class="font-semibold">S05 E02 1080P:</span>
+            <a href="#" class="watch-link text-blue-500 hover:underline" data-src="https://drive.google.com/file/d/18zD1Fn8aNFVCb5WcmDxaLOjnjW1k7F6P/preview">Watch Here</a>
+          </div>
+          <div><span class="font-semibold">S05 E03 1080P:</span>
+            <a href="#" class="watch-link text-blue-500 hover:underline" data-src="https://short.icu/0AYa4qcfZ">Watch Here</a>
+          </div>
+          <div><span class="font-semibold">S05 E04 1080P:</span>
+            <a href="#" class="watch-link text-blue-500 hover:underline" data-src="https://drive.google.com/file/d/1jLiXOvURzvahxEVRw9BqJAsJlefaj8Ca/preview">Watch Here</a>
+          </div>
+        </div>
+
+        <div class="preview-container mt-4 hidden">
+          <iframe class="w-full h-64 rounded-lg shadow" src="" allowfullscreen loading="lazy"></iframe>
+          <button class="stop-preview mt-2 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 text-sm">
+            ⛔ Stop Preview
+          </button>
+        </div>
+      </details>
+
+      <!-- Solo Leveling 2 -->
+      <details class="video-folder bg-white dark:bg-slate-900 rounded-2xl p-4 shadow-card">
+        <summary class="cursor-pointer font-semibold text-lg flex items-center justify-between">
+          <span>📁 Solo Leveling 2</span>
+          <span class="text-xs text-slate-500 dark:text-slate-400">Tap to expand</span>
+        </summary>
+
+        <div class="mt-4 space-y-2 text-sm">
+          <div><span class="font-semibold">S02E01 1080P:</span>
+            <a href="#" class="watch-link text-blue-500 hover:underline" data-src="https://deadtoons.upns.ink/#tahogx">Watch Here</a>
+          </div>
+          <div><span class="font-semibold">S02E02 1080P:</span>
+            <a href="#" class="watch-link text-blue-500 hover:underline" data-src="https://deadtoons.upns.ink/#kdzhls">Watch Here</a>
+          </div>
+          <div><span class="font-semibold">S02E03 1080P:</span>
+            <a href="#" class="watch-link text-blue-500 hover:underline" data-src="https://deadtoons.upns.ink/#luahr8">Watch Here</a>
+          </div>
+          <div><span class="font-semibold">S02E04 1080P:</span>
+            <a href="#" class="watch-link text-blue-500 hover:underline" data-src="https://deadtoons.upns.ink/#tasyjb">Watch Here</a>
+          </div>
+          <div><span class="font-semibold">S02E05 1080P:</span>
+            <a href="#" class="watch-link text-blue-500 hover:underline" data-src="https://deadtoons.upns.ink/#kd18m8">Watch Here</a>
+          </div>
+          <div><span class="font-semibold">S02E06 1080P:</span>
+            <a href="#" class="watch-link text-blue-500 hover:underline" data-src="https://deadtoons.upns.ink/#onfiw6">Watch Here</a>
+          </div>
+          <div><span class="font-semibold">S02E07 1080P:</span>
+            <a href="#" class="watch-link text-blue-500 hover:underline" data-src="https://deadtoons.upns.ink/#vzpkpe">Watch Here</a>
+          </div>
+          <div><span class="font-semibold">S02E08 1080P:</span>
+            <a href="#" class="watch-link text-blue-500 hover:underline" data-src="https://deadtoons.upns.ink/#3vep9q">Watch Here</a>
+          </div>
+          <div><span class="font-semibold">S02E09 1080P:</span>
+            <a href="#" class="watch-link text-blue-500 hover:underline" data-src="https://deadtoons.upns.ink/#ep3vzz">Watch Here</a>
+          </div>
+          <div><span class="font-semibold">S02E10 1080P:</span>
+            <a href="#" class="watch-link text-blue-500 hover:underline" data-src="https://deadtoons.upns.ink/#geq3vc">Watch Here</a>
+          </div>
+          <div><span class="font-semibold">S02E11 1080P:</span>
+            <a href="#" class="watch-link text-blue-500 hover:underline" data-src="https://deadtoons.upns.ink/#c5is9z">Watch Here</a>
+          </div>
+          <div><span class="font-semibold">S02E12 1080P:</span>
+            <a href="#" class="watch-link text-blue-500 hover:underline" data-src="https://deadtoons.upns.ink/#lua1bo">Watch Here</a>
+          </div>
+          <div><span class="font-semibold">S02E13 1080P:</span>
+            <a href="#" class="watch-link text-blue-500 hover:underline" data-src="https://deadtoons.upns.ink/#rqf3u1">Watch Here</a>
+          </div>
+        </div>
+
+        <div class="preview-container mt-4 hidden">
+          <iframe class="w-full h-64 rounded-lg shadow" src="" allowfullscreen loading="lazy"></iframe>
+          <button class="stop-preview mt-2 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 text-sm">
+            ⛔ Stop Preview
+          </button>
+        </div>
+      </details>
+      
+      <!-- Asia Cup LIVE 2025 -->
+      <details class="video-folder bg-white dark:bg-slate-900 rounded-2xl p-4 shadow-card">
+        <summary class="cursor-pointer font-semibold text-lg flex items-center justify-between">
+          <span>📁 Cricket Live</span>
+          <span class="text-xs text-slate-500 dark:text-slate-400">Tap to expand</span>
+        </summary>
+
+        <div class="mt-4 space-y-2 text-sm">
+          <div>
+            <span class="font-semibold">IND vs SA 2025:</span>
+            <a href="#" class="watch-link text-blue-500 hover:underline" data-src="https://live-en.aisports.cc/moviebox/device01/playlist.m3u8">Watch Here</a>
+          </div>
+          <div>
+            <span class="font-semibold">Asia Cup 2025 V2:</span>
+            <a href="#" class="watch-link text-blue-500 hover:underline" data-src="https://ytvlive.pages.dev/stream?id=willow">Watch Here</a>
+          </div>
+        </div>
+
+        <div class="preview-container mt-4 hidden">
+          <iframe class="w-full h-64 rounded-lg shadow" src="" allowfullscreen loading="lazy"></iframe>
+          <button class="stop-preview mt-2 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 text-sm">
+            ⛔ Stop Preview
+          </button>
+        </div>
+      </details>
+
+      <!-- Add more <details> blocks here for other shows/streams -->
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="mt-auto py-6 border-t dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 backdrop-blur">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between text-sm">
+      <p>© 2026 Anime Hub • Movies & Webseries</p>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Theme toggle
+    const html = document.documentElement;
+    const themeBtn = document.getElementById('theme-toggle');
+
+    if (localStorage.getItem('theme') === 'dark') {
+      html.classList.add('dark');
+      themeBtn.textContent = '☀️';
+    }
+
+    themeBtn.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      const isDark = html.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      themeBtn.textContent = isDark ? '☀️' : '🌙';
+    });
+
+    // Video preview logic
+    const links = document.querySelectorAll('.watch-link');
+    const previewContainers = document.querySelectorAll('.preview-container');
+
+    links.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const src = link.getAttribute('data-src');
+        const folder = link.closest('.video-folder');
+        const preview = folder.querySelector('.preview-container');
+        const iframe = preview.querySelector('iframe');
+
+        // Hide other previews
+        previewContainers.forEach(pc => {
+          if (pc !== preview) {
+            pc.classList.add('hidden');
+            const f = pc.querySelector('iframe');
+            if (f) f.src = '';
+          }
+        });
+
+        // Show and update current preview
+        iframe.src = src;
+        preview.classList.remove('hidden');
+      });
+    });
+
+    document.querySelectorAll('.stop-preview').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const container = btn.closest('.preview-container');
+        container.classList.add('hidden');
+        const iframe = container.querySelector('iframe');
+        if (iframe) iframe.src = '';
+      });
+    });
+  </script>
+</body>
+</html>
