@@ -26,7 +26,7 @@ Built with **pure HTML + TailwindCSS**, hosted on **GitHub Pages**, and designed
 
 ## ✨ Demo & Live Site
 
-- 🔗 **Live URL:** `https://amits.ddns.net/`
+- 🔗 **Live URL:** `https://animehub.ddns.net/`
 
 - 📁 Hosted with: **GitHub Pages**  
 - ⚡ No backend. Just **HTML + CSS + tiny JS**.
@@ -39,11 +39,11 @@ Built with **pure HTML + TailwindCSS**, hosted on **GitHub Pages**, and designed
 - 🌗 **Dark / Light mode** with persistence via `localStorage`  
 - 📱 **Fully responsive** on desktop, tablet, and mobile  
 - 🧭 **Multiple sections**:
-  - `software.html` — curated software and tools
-  - `video.html` — streaming & episode previews with inline `<iframe>`
-  - `anime.html` — anime portals in one place
-  - `course.html` — personal learning hub
-  - `index2.html` — utilities and extra web tools  
+  - `software` — curated software and tools
+  - `video` — streaming & episode previews with inline `<iframe>`
+  - `anime` — anime portals in one place
+  - `course` — personal learning hub
+  - `web` — utilities and extra web tools  
 - 🧊 **Floating animations** for icons (Tailwind keyframes)  
 - 🎯 Clean, minimal code that is easy to extend
 
